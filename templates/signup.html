@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Authentication</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+	<h1>Sign Up</h1>
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+    <strong>Message:</strong> {{ message }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria_hidden="true">&times;</span>
+    </button>
+    </div>
+  {% endfor %}
+    <form action="{% url 'signup' %}" method="POST">
+    {% csrf_token %}
+        <label>Username</label>
+        <input type="text" name="username" id="username" placeholder="Create a username" required>
+        <br>
+        <label>First Name</label>
+        <input type="text" name="firstname" id="firstname" placeholder="Enter the First Name" required>
+        <br>
+        <label>Last Name</label>
+        <input type="text" name="lastname" id="lastname" placeholder="Enter the Last Name" required>
+        <br>
+        <label>Email</label>
+        <input type="email" name="email" id="email" placeholder="Enter the email address" required>
+        <br>
+        <label>Password</label>
+        <input type="password" name="password1" id="password1" placeholder="Enter the Password" required>
+        <br>
+        <label>Confirm Password</label>
+        <input type="password" name="password2" id="password2" placeholder="Re-enter the password" required>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+	<script src="index.js"></script>
+  </body>
+</html>
